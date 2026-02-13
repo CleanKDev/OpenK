@@ -1,0 +1,29 @@
+robot:
+  type: openk-1-alpha_follower2
+  port: COM9
+  sts_port: COM10
+  id: follower
+  calibration_dir: calib
+  cameras: {}
+  control_type: MIT
+
+always_calibrate: false
+
+dt: 0.0333333333
+segment_time_min: 0.5
+segment_time_max: 3.0
+time_sampling: lognormal_frequency
+num_segments: 10
+hold_sec: 0.5
+
+# Units: rad, rad/s, N.m (Damiao only; STS joints are ignored).
+# q_min/q_max are centered at each joint's mid-range.
+# Tune limits to your hardware.
+v_min: [0.2, 0.2, 0.2, 0.2, 0.2]
+v_max: [1.0, 1.0, 1.0, 1.0, 1.0]
+a_lim: [2.0, 2.0, 2.0, 2.0, 2.0]
+j_lim: [10.0, 10.0, 10.0, 10.0, 10.0]
+safe_range_margin: 0.1
+
+output_csv: outputs/torque_data.csv
+seed: null

@@ -1,0 +1,21 @@
+robot:
+  type: openk-1-alpha_follower
+  port: /dev/ttyACM1
+  id: follower
+  # cameras: {}  # デフォルトの RealSense 設定を消したいときだけ有効化
+
+teleop:
+  type: openk_leader
+  port: /dev/ttyACM0
+  id: leader
+
+dataset:
+  repo_id: debroglieeeen/OpenK202511231651
+  single_task: "Describe your task"
+  num_episodes: 2
+  fps: 30
+# root: ./data  #デフォルトは ~/.cache/huggingface/datasets/
+
+always_calibrate: true
+display_data: false
+log_file: logs/openk_record.log

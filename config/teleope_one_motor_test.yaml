@@ -1,0 +1,16 @@
+teleop:
+  type: one-motor-test_leader
+  port: COM3
+  id: leader
+
+robot:
+  type: one-motor-test_follower
+  port: COM4
+  id: follower
+  max_relative_target: 20
+
+fps: 60
+teleop_time_s: null
+always_calibrate: true
+display_data: False
+log_file: logs/one_motor_teleoperate.log

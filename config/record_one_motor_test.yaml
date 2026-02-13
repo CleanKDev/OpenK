@@ -1,0 +1,20 @@
+robot:
+  type: one-motor-test_follower
+  port: COM4
+  id: follower
+  max_relative_target: 20
+
+teleop:
+  type: one-motor-test_leader
+  port: COM3
+  id: leader
+
+dataset:
+  repo_id: "<your_username>/one-motor-test"
+  single_task: "Describe your task"
+  num_episodes: 1
+  fps: 30
+
+always_calibrate: true
+display_data: false
+log_file: logs/one_motor_record.log

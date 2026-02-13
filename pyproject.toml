@@ -1,0 +1,59 @@
+[project]
+name = "lerobot-openk"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "keyboard>=0.13.5",
+    "lerobot @ git+https://github.com/OpenKDev/lerobot.git@feature/OpenK",
+    "numpy>=2.2.6",
+    "pyrealsense2>=2.56.5.9235; sys_platform != 'darwin'",
+    "feetech-servo-sdk>=1.0.0",
+    "scipy>=1.15.3",
+]
+
+
+[tool.uv]
+package = true
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["openk", "scripts", "utils"]
+
+
+#[tool.uv.sources]
+#  lerobot = { path = "../lerobot", editable = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.1",
+    "ruff>=0.14.5",
+    "ipykernel>=6.29.5",
+    "matplotlib>=3.9.0",
+    "pandas>=2.2.2",
+]
+
+[project.scripts]
+openk-record  = "scripts.openk_record:main"
+openk-teleoperate = "scripts.openk_teleoperate:main"
+lerobot-calibrate = "scripts.lerobot_calibrate:main"
+lerobot-find-port = "scripts.lerobot_find_port:main"
+lerobot-find-cameras = "scripts.lerobot_find_cameras:main"
+lerobot-info = "scripts.lerobot_info:main"
+
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+exclude = [
+    "Untitled-1.ipynb",
+    "teleoperation*.py",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"openk/**/__init__.py" = ["F401"]
+"test/test_openk_hil.py" = ["E402"]

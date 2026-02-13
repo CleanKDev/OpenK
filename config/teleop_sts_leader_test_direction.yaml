@@ -1,0 +1,27 @@
+teleop:
+  type: openk-1-sts_leader
+  port: COM11
+  id: leader
+  calibration_dir: calib
+
+robot:
+  type: openk-1-alpha_follower2
+  port: COM9
+  sts_port: COM10
+  id: follower
+  calibration_dir: calib
+  cameras: {}  
+fps: 60
+teleop_time_s: null
+direction_map:
+  shoulder_pan: -1
+  shoulder_lift: -1
+  shoulder_roll: -1
+  wrist_roll: -1
+  grip: -1
+  wrist_flex: -1
+always_calibrate: false
+display_data: false
+display_cli: true
+log_file: logs/openk_teleoperate.log
+daily_log_file_name: true

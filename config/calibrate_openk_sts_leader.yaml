@@ -1,0 +1,6 @@
+teleop:
+  type: openk-1-sts_leader #ロボットの種類
+  port: COM6
+  id: hogehogerobot #ロボットの個体識別名
+  #calibration_dir: null #calibration_dirは今後使わない。
+  calibration_root: calib

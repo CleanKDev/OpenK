@@ -1,0 +1,46 @@
+robot:
+  type: openk-1-alpha_follower2
+  port: /dev/cu.usbmodem00000000050C1  # Damiao CAN-USB adapter
+  motor_norm_mode: range_m100_100
+  sts_port: /dev/cu.usbserial-1130      # Follower STS serial (motor ID 1,2)
+  sts_motor_norm_mode: range_m100_100
+  id: follower
+  calibration_dir: calib
+  cameras:
+    cam_main:
+      type: opencv
+      index_or_path: 1  # USBカメラのインデックス (0が内蔵、1以降が外部カメラの場合が多い)
+      fps: 30
+      width: 640
+      height: 480
+      warmup_s: 3  # カメラのウォームアップ時間（秒）
+      # RealSenseを使う場合は以下をコメント解除
+      # cam_realsense:
+      #   type: realsense
+      #   serial_number_or_name: "850312071789"
+      #   fps: 30
+      #   width: 640
+      #   height: 480
+      #   use_depth: false
+      
+teleop:
+  type: openk-1-sts_leader
+  port: /dev/cu.usbserial-1120  # Leader STS serial (motor ID 1-7)
+  id: leader
+  calibration_dir: calib
+
+# Invert direction for all Damiao motors (leader STS -> follower Damiao mismatch)
+direction_map:
+  shoulder_pan: -1.0
+  shoulder_lift: -1.0
+  shoulder_roll: -1.0
+  elbow_flex: -1.0
+  wrist_roll: -1.0
+  wrist_flex: 1.0
+  grip: -1.0
+
+dataset:
+  repo_id: local/openk_test_dataset
+  fps: 30  # カメラのfpsに合わせる
+  single_task: "Teleoperation test task"
+  push_to_hub: false  # Set to true and update repo_id with your HuggingFace username to upload

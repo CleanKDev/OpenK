@@ -1,0 +1,20 @@
+mode: record
+record_file: outputs/follower2_record.csv
+record_dt_s: 0.01
+record_time_s: null
+record_max_time_s: 1200
+record_start_wait: true
+display_cli: true
+display_cli_interval_s: 0.1
+display_cli_precision: 3
+always_calibrate: false
+log_file: logs/record_and_replay.log
+
+robot:
+  type: openk-1-alpha_follower2
+  port: COM5
+  sts_port: COM10
+  id: follower
+  calibration_dir: calib/onearm
+  cameras: {}
+  control_type: MIT

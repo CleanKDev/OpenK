@@ -1,0 +1,6 @@
+robot:
+  type: openk-1-alpha_follower2
+  port: COM5
+  sts_port: COM3
+  id: follower
+  calibration_dir: calib/onearm

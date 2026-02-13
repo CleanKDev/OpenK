@@ -1,0 +1,36 @@
+mode: replay
+record_file: outputs/follower2_record.csv
+record_dt_s: 0.01
+display_cli: true
+display_cli_interval_s: 0.1
+display_cli_precision: 3
+always_calibrate: false
+log_file: logs/record_and_replay.log
+exclude_vel_in_replay: false
+
+robot:
+  type: openk-1-alpha_follower2
+  port: COM5
+  sts_port: COM10
+  id: follower
+  calibration_dir: calib/onearm
+  cameras: {}
+  control_type: POS_VEL
+  damiao_kp:
+    shoulder_pan: 20.0
+    shoulder_lift: 20.0
+    shoulder_roll: 20.0
+    elbow_flex: 20.0
+    wrist_roll: 20.0
+  damiao_kd:
+    shoulder_pan: 1.0
+    shoulder_lift: 1.0
+    shoulder_roll: 1.0
+    elbow_flex: 1.0
+    wrist_roll: 1.0
+  damiao_velocity_limit:
+    shoulder_pan: 2.0
+    shoulder_lift: 2.0
+    shoulder_roll: 2.0
+    elbow_flex: 2.0
+    wrist_roll: 2.0

@@ -1,0 +1,171 @@
+
+### Environments & Dependencies ###
+.env
+.venv
+env/
+venv/
+env.bak/
+venv.bak/
+.python-version
+__pypackages__/
+node_modules/
+
+# Lock files
+poetry.lock
+uv.lock
+Pipfile.lock
+
+### Build & Distribution ###
+build/
+dist/
+sdist/
+wheels/
+downloads/
+eggs/
+.eggs/
+parts/
+var/
+pip-wheel-metadata/
+share/python-wheels/
+develop-eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+lib/
+lib64/
+
+# PyInstaller
+*.manifest
+*.spec
+
+### Compiled & Cached Files ###
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.sage.py
+.cache/
+.ruff_cache/
+.mypy_cache/
+.pyre/
+.pytype/
+cython_debug/
+
+### Testing & Coverage ###
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.pytest_cache/
+.hypothesis/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+!tests/artifacts
+
+### Logs & Temporary Files ###
+logs/
+tmp/
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+celerybeat-schedule
+celerybeat.pid
+
+### IDE & Editor Config ###
+# VS Code
+.vscode/
+.devcontainer/
+
+# JetBrains / PyCharm
+.idea/
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope
+.ropeproject
+
+# Vim
+*.swp
+
+# Other
+*~
+
+### OS Specific ###
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+### Framework & Tool Specific ###
+
+.Python
+
+# Django
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask
+instance/
+.webassets-cache
+
+# Scrapy
+.scrapy
+
+# Jupyter
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# Sphinx
+docs/_build/
+
+# MkDocs
+/site
+
+# PyBuilder
+.pybuilder/
+target/
+
+# mypy
+.dmypy.json
+dmypy.json
+
+### HPC & Slurm ###
+nautilus/*.yaml
+*.key
+sbatch*.sh
+
+### Miscellaneous ###
+# W&B
+wandb/
+
+# Dev scripts
+.dev/
+
+# Data folders
+data/
+outputs/
+
+# Translations
+*.mo
+*.pot
+
+# Dev folders
+.cache/*
+*.stl
+*.urdf
+*.xml
+*.part
+.uv_cache/
+
+# myconfiguration files
+my_config*/
+myconfig*/

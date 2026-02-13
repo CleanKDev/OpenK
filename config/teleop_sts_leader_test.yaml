@@ -1,0 +1,21 @@
+teleop:
+  type: openk-1-sts_leader
+  port: /dev/ttyUSB1
+  id: leader
+  calibration_dir: calib
+
+robot:
+  type: openk-1-alpha_follower
+  port: /dev/ttyACM0
+  sts_port: /dev/ttyUSB0
+  id: follower
+  calibration_dir: calib
+  # cameras: {}  # デフォルトの RealSense 設定を消したいときだけ有効化
+
+fps: 60
+teleop_time_s: null
+always_calibrate: true
+display_data: false
+display_cli: true
+log_file: logs/openk_teleoperate.log
+daily_log_file_name: true
