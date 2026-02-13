@@ -2,6 +2,21 @@
 
 OpenK ロボット向けの LeRobot 拡張。ローカル `.venv` と `uv` で開発・実行します。
 
+# DEMO
+https://github.com/user-attachments/assets/2fc6349e-fb53-4c70-8322-91da34f47839
+
+# CAD
+## Follower
+https://github.com/CleanKDev/OpenK/blob/main/hardware/follower/OpenKSTEP.step
+
+## Leader
+https://github.com/CleanKDev/OpenK/blob/main/hardware/leader/small-leader.step
+
+# Core Members
+@sabamiso-rrsc ほぼすべてのハードウェア、組み込み開発、DAMIAOイニシャライズ　ソフトウェア
+@UedaKenji lerobotコード統合。メインソフトウェア開発
+@shunyatadano URDF及びシミュレーション
+@shinshin0706, Ryosuke520, deBroglieeeen 現場レベルのインテグレーション及びハードウェア、ソフトウェアの調整、シミュレーション開発 
 ## セットアップ
 - 前提: Python 3.10 / [uv](https://github.com/astral-sh/uv)
 - 初回:
@@ -80,3 +95,7 @@ OpenK ロボット向けの LeRobot 拡張。ローカル `.venv` と `uv` で�
 ## 補足
 - `pyproject.toml` の `lerobot` 依存はローカル `../lerobot` を editable 参照しています。パスが異なる場合は適宜修正してください。
 -
+
+# 謝辞
+LeRobot by HuggingFace, Inc.
+SO-100 by TheRobotStudio
