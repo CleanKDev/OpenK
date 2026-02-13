@@ -1,6 +1,9 @@
 # lerobot-openk
 
-OpenK ロボット向けの LeRobot 拡張。ローカル `.venv` と `uv` で開発・実行します。
+オープンソース低コストAIロボットアームOpenK
+板金不要。ボディ部分はすべて3Dプリンタで作成可能。URDF完備
+lerobotコードベースで動作します。
+ローカル `.venv` と `uv` で開発・実行します。
 
 # DEMO
 https://github.com/user-attachments/assets/2fc6349e-fb53-4c70-8322-91da34f47839
