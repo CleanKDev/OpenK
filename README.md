@@ -18,6 +18,12 @@ https://github.com/user-attachments/assets/53bd0b76-32d7-4085-9f98-901ec6ca804d
 - https://github.com/CleanKDev/OpenK/blob/main/hardware/leader/small-leader.step
 <img width="387" height="395" alt="image" src="https://github.com/user-attachments/assets/e6cb0c62-0938-41ab-9ce5-0a8835269c25" />
 
+# Actuators
+アクチュエーター構成：
+・肩×2：DM-J6006
+・上腕・肘・前腕：DM-J4310
+・手首・グリッパー：STS3215
+・リーダーアーム：全軸STS3215
 
 # Core Members
 - [@sabamiso-rrsc](https://x.com/sabamiso_RRSC) ほぼすべてのハードウェア、組み込み開発、DAMIAOイニシャライズ　ソフトウェア
@@ -106,3 +112,4 @@ https://github.com/user-attachments/assets/53bd0b76-32d7-4085-9f98-901ec6ca804d
 # 謝辞
 - LeRobot by HuggingFace, Inc.
 - SO-100 by TheRobotStudio
+- OpenArm by Enactic, inc.
