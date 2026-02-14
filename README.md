@@ -10,16 +10,20 @@ https://github.com/user-attachments/assets/53bd0b76-32d7-4085-9f98-901ec6ca804d
 
 # CAD
 ## Follower
-https://github.com/CleanKDev/OpenK/blob/main/hardware/follower/OpenKSTEP.step
+- https://github.com/CleanKDev/OpenK/blob/main/hardware/follower/OpenKSTEP.step
+<img width="355" height="646" alt="image" src="https://github.com/user-attachments/assets/b3e61dc8-b2bb-4c2e-8feb-bde9bd71bdcf" />
+
 
 ## Leader
-https://github.com/CleanKDev/OpenK/blob/main/hardware/leader/small-leader.step
+- https://github.com/CleanKDev/OpenK/blob/main/hardware/leader/small-leader.step
+<img width="387" height="395" alt="image" src="https://github.com/user-attachments/assets/e6cb0c62-0938-41ab-9ce5-0a8835269c25" />
+
 
 # Core Members
 - [@sabamiso-rrsc](https://x.com/sabamiso_RRSC) ほぼすべてのハードウェア、組み込み開発、DAMIAOイニシャライズ　ソフトウェア
 - [@UedaKenji](https://x.com/kenji5012) lerobotコード統合。メインソフトウェア開発
-- @shunyatadano URDF及びシミュレーション
-- @shinshin0706, @Ryosuke520, @deBroglieeeen 現場レベルのインテグレーション及びハードウェア、ソフトウェアの調整、シミュレーション開発 
+- [@shunyatadano](https://x.com/tdshun) URDF及びシミュレーション
+- @shinshin0706, [@Ryosuke520](https://x.com/Ryosuke_Nkgw), [@deBroglieeeen](https://x.com/_nm_inp) 現場レベルのインテグレーション及びハードウェア、ソフトウェアの調整、シミュレーション開発 
 ## セットアップ
 - 前提: Python 3.10 / [uv](https://github.com/astral-sh/uv)
 - 初回:
