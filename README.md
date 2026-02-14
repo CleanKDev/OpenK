@@ -1,6 +1,6 @@
 # OpenK on lerobot
 
-オープンソース低コストAIロボットアームOpenK
+オープンソース低コストAIロボットアームOpenK。10万円台で作ることが可能です。
 板金不要。ボディ部分はすべて3Dプリンタで作成可能。URDF完備
 DAMIAOモーターを使用し、lerobotコードベースで動作します。
 ローカル `.venv` と `uv` で開発・実行します。
@@ -16,10 +16,10 @@ https://github.com/CleanKDev/OpenK/blob/main/hardware/follower/OpenKSTEP.step
 https://github.com/CleanKDev/OpenK/blob/main/hardware/leader/small-leader.step
 
 # Core Members
-[@sabamiso-rrsc]( https://x.com/sabamiso_RRSC https://github.com/sabamiso-rrsc) ほぼすべてのハードウェア、組み込み開発、DAMIAOイニシャライズ　ソフトウェア
-@UedaKenji lerobotコード統合。メインソフトウェア開発
-@shunyatadano URDF及びシミュレーション
-@shinshin0706, @Ryosuke520, @deBroglieeeen 現場レベルのインテグレーション及びハードウェア、ソフトウェアの調整、シミュレーション開発 
+- [@sabamiso-rrsc](https://x.com/sabamiso_RRSC) ほぼすべてのハードウェア、組み込み開発、DAMIAOイニシャライズ　ソフトウェア
+- [@UedaKenji](https://x.com/kenji5012) lerobotコード統合。メインソフトウェア開発
+- @shunyatadano URDF及びシミュレーション
+- @shinshin0706, @Ryosuke520, @deBroglieeeen 現場レベルのインテグレーション及びハードウェア、ソフトウェアの調整、シミュレーション開発 
 ## セットアップ
 - 前提: Python 3.10 / [uv](https://github.com/astral-sh/uv)
 - 初回:
@@ -100,5 +100,5 @@ https://github.com/CleanKDev/OpenK/blob/main/hardware/leader/small-leader.step
 -
 
 # 謝辞
-LeRobot by HuggingFace, Inc.
-SO-100 by TheRobotStudio
+- LeRobot by HuggingFace, Inc.
+- SO-100 by TheRobotStudio
