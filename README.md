@@ -1,12 +1,12 @@
-# lerobot-openk
+# OpenK on lerobot
 
 オープンソース低コストAIロボットアームOpenK
 板金不要。ボディ部分はすべて3Dプリンタで作成可能。URDF完備
-lerobotコードベースで動作します。
+DAMIAOモーターを使用し、lerobotコードベースで動作します。
 ローカル `.venv` と `uv` で開発・実行します。
 
 # DEMO
-https://github.com/user-attachments/assets/2fc6349e-fb53-4c70-8322-91da34f47839
+https://github.com/user-attachments/assets/53bd0b76-32d7-4085-9f98-901ec6ca804d
 
 # CAD
 ## Follower
@@ -16,10 +16,10 @@ https://github.com/CleanKDev/OpenK/blob/main/hardware/follower/OpenKSTEP.step
 https://github.com/CleanKDev/OpenK/blob/main/hardware/leader/small-leader.step
 
 # Core Members
-@sabamiso-rrsc ほぼすべてのハードウェア、組み込み開発、DAMIAOイニシャライズ　ソフトウェア
+[@sabamiso-rrsc]( https://x.com/sabamiso_RRSC https://github.com/sabamiso-rrsc) ほぼすべてのハードウェア、組み込み開発、DAMIAOイニシャライズ　ソフトウェア
 @UedaKenji lerobotコード統合。メインソフトウェア開発
 @shunyatadano URDF及びシミュレーション
-@shinshin0706, Ryosuke520, deBroglieeeen 現場レベルのインテグレーション及びハードウェア、ソフトウェアの調整、シミュレーション開発 
+@shinshin0706, @Ryosuke520, @deBroglieeeen 現場レベルのインテグレーション及びハードウェア、ソフトウェアの調整、シミュレーション開発 
 ## セットアップ
 - 前提: Python 3.10 / [uv](https://github.com/astral-sh/uv)
 - 初回:
