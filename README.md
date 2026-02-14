@@ -1,104 +1,179 @@
-# OpenK on lerobot
+# OpenK on LeRobot
 
-オープンソース低コストAIロボットアームOpenK
-板金不要。ボディ部分はすべて3Dプリンタで作成可能。URDF完備
-DAMIAOモーターを使用し、lerobotコードベースで動作します。
-ローカル `.venv` と `uv` で開発・実行します。
+OpenK は、低コストなオープンソースロボットアームを `LeRobot` ベースで動かすためのリポジトリです。  
+このリポジトリには、ハードウェア資産（CAD/STL/URDF）と、実行用スクリプト（テレオペ・記録・再生・キャリブレーション）が含まれています。
 
-# DEMO
-https://github.com/user-attachments/assets/53bd0b76-32d7-4085-9f98-901ec6ca804d
+## DEMO
 
-# CAD
-## Follower
-https://github.com/CleanKDev/OpenK/blob/main/hardware/follower/OpenKSTEP.step
+- 動作動画: https://github.com/user-attachments/assets/53bd0b76-32d7-4085-9f98-901ec6ca804d
 
-## Leader
-https://github.com/CleanKDev/OpenK/blob/main/hardware/leader/small-leader.step
+## まず何ができる？
 
-# Core Members
-[@sabamiso-rrsc]( https://x.com/sabamiso_RRSC https://github.com/sabamiso-rrsc) ほぼすべてのハードウェア、組み込み開発、DAMIAOイニシャライズ　ソフトウェア
-@UedaKenji lerobotコード統合。メインソフトウェア開発
-@shunyatadano URDF及びシミュレーション
-@shinshin0706, @Ryosuke520, @deBroglieeeen 現場レベルのインテグレーション及びハードウェア、ソフトウェアの調整、シミュレーション開発 
-## セットアップ
-- 前提: Python 3.10 / [uv](https://github.com/astral-sh/uv)
-- 初回:
-  ```bash
-  git clone <repo-url> lerobot_OpenK
-  cd lerobot_OpenK
-  uv venv .venv --python 3.10
-  source .venv/bin/activate
-  uv pip install -e .
-  ```
-- 以降の作業時は `source .venv/bin/activate` のみで OK。
+- Leader アームを操作して Follower アームを動かす（テレオペ）
+- 操作データを記録する（データセット作成）
+- 記録データを再生する（リプレイ）
+- キャリブレーション・ポート探索などの運用ツールを使う
+
+## 3分クイックスタート
+
+### 1) セットアップ
+
+前提:
+- Python `3.10`
+- `uv`（https://github.com/astral-sh/uv）
+
+```bash
+git clone <repo-url> OpenK
+cd OpenK
+uv venv .venv --python 3.10
+```
+
+Windows PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Linux/macOS:
+
+```bash
+source .venv/bin/activate
+```
+
+```bash
+uv pip install -e .
+```
+
+### 2) ポート確認
+
+```bash
+uv run python scripts/lerobot_find_port.py
+```
+
+出てきたポート名（例: `COM5` / `/dev/ttyACM0`）を控えます。
+
+### 3) 設定ファイルを編集
+
+- `config/teleop_example.yaml`
+- `config/record_example.yaml`
+
+上記の `teleop.port` と `robot.port` を、自分の環境のポートに変更します。
+
+### 4) キャリブレーション
+
+```bash
+uv run python scripts/lerobot_calibrate.py --config_path=config/calibrate_openk_sts_leader.yaml
+```
+
+### 5) テレオペ開始
+
+```bash
+uv run python scripts/cleank_teleoperate.py --config_path=config/teleop_example.yaml
+```
+
+停止: `Ctrl + C`
+
+## 主要コマンド早見表
+
+| 目的 | コマンド |
+|---|---|
+| ポート探索 | `uv run python scripts/lerobot_find_port.py` |
+| テレオペ | `uv run python scripts/cleank_teleoperate.py --config_path=config/teleop_example.yaml` |
+| 記録 | `uv run python scripts/cleank_record.py --config_path=config/record_example.yaml` |
+| リプレイ | `uv run python scripts/lerobot_replay.py --config_path=config/replay_follower2.yaml` |
+| キャリブレーション | `uv run python scripts/lerobot_calibrate.py --config_path=config/calibrate_openk_sts_leader.yaml` |
+| カメラ探索 | `uv run python scripts/lerobot_find_cameras.py` |
+| 情報表示 | `uv run python scripts/lerobot_info.py` |
+
+## リポジトリ構成（何がどこにあるか）
+
+| パス | 内容 | 使うタイミング |
+|---|---|---|
+| `hardware/follower/OpenKSTEP.step` | Follower CAD（STEP） | 機械設計・3D確認 |
+| `hardware/leader/small-leader.step` | Leader CAD（STEP） | 機械設計・3D確認 |
+| `hardware/follower/robot.urdf` | Follower URDF | シミュレーション・モデル確認 |
+| `hardware/follower/*.stl` / `hardware/leader/*.stl` | 3Dプリント用メッシュ | 製作時 |
+| `config/*.yaml` | 実行設定（ポート、ID、fps など） | 実行前に編集 |
+| `scripts/*.py` | 実行スクリプト本体 | 実行時 |
+| `openk/` | ロボット実装 | 開発時 |
+| `test/` | テスト | 変更確認時 |
+
+## 可視化（READMEで全体を掴む）
+
+### 構成図
+
+```mermaid
+flowchart LR
+    U[Operator] --> L[Leader Arm]
+    L --> PC[PC: OpenK scripts + LeRobot]
+    PC --> F[Follower Arm]
+    PC --> D[Dataset]
+```
+
+### 典型フロー
+
+```mermaid
+flowchart LR
+    A[Port Search] --> B[Edit config YAML]
+    B --> C[Calibrate]
+    C --> D[Teleoperate]
+    D --> E[Record]
+    E --> F[Replay]
+```
 
 ## テスト
-- 通常（ハードウェア不要）:
-  ```bash
-  UV_CACHE_DIR=.uv_cache uv run pytest
-  ```
-- 実機接続の HIL テスト（オプション）:
-  ```bash
-  OPENK_HIL=1 \
-  OPENK_FOLLOWER_PORT=/dev/ttyUSB0 \
-  OPENK_LEADER_PORT=/dev/ttyUSB1 \
-  UV_CACHE_DIR=.uv_cache uv run pytest test/test_openk_hil.py -q
-  ```
-  ※カメラは無効化し、接続→1回観測/アクション取得のみ。
 
-## 主要スクリプト
-- ポートが不明な場合は先にポート探索:  
-  ```bash
-  uv run lerobot-find-port
-  ```
-  で `ttyUSB*` などを確認してから下記を実行。
-- テレオペ:  
-  ```bash
-  uv run openk-teleoperate \
-    --robot.type=openk-1-alpha_follower --robot.port=<follower-port> --robot.id=follower \
-    --teleop.type=openk_leader --teleop.port=<leader-port> --teleop.id=leader \
-    --log_file=logs/openk_teleoperate.log
-  ```
-  - Ctrl + C で停止
+通常テスト:
 
-- 記録:  
-  ```bash
-  uv run openk-record \
-    --robot.type=openk-1-alpha_follower --robot.port=<follower-port> --robot.id=follower \
-    --teleop.type=openk_leader --teleop.port=<leader-port> --teleop.id=leader \
-    --dataset.repo_id=<user>/<dataset> --dataset.num_episodes=2 --dataset.single_task="Describe task" \
-    --log_file=logs/openk_record.log
-  ```
-- リプレイ:  
-  ```bash
-  uv run lerobot-replay \
-    --robot.type=openk-1-alpha_follower --robot.port=<follower-port> --robot.id=follower \
-    --dataset.repo_id=<user>/<dataset> --dataset.episode=0
-  ```
-- キャリブレーション:  
-  ```bash
-  uv run lerobot-calibrate --teleop.type=openk_leader --teleop.port=<leader-port> --teleop.id=leader
-  ```
-- その他ユーティリティ: `lerobot-find-port`, `lerobot-find-cameras`, `lerobot-info`。
+```bash
+UV_CACHE_DIR=.uv_cache uv run pytest
+```
 
-### 設定ファイルから実行する場合
-- 例の YAML を同梱:
-  - `configs/teleop_example.yaml`
-  - `configs/record_example.yaml`
-- 実行例:
-  ```bash
-  uv run openk-teleoperate --config_path=config/teleop_example.yaml
-  uv run openk-record --config_path=config/record_example.yaml
-  ```
-- YAML に書いたキーはそのまま適用、書かないキーはデフォルトのまま（`cameras` を残したい場合はキー自体を書かない）。
+HIL テスト（任意、実機接続あり）:
 
-## ログ
-- テレオペ/記録はデフォルトで `logs/openk_teleoperate.log` / `logs/openk_record.log` に出力（親ディレクトリは自動生成）。`--log_file` で上書き可能。
+```bash
+OPENK_HIL=1 \
+OPENK_FOLLOWER_PORT=/dev/ttyUSB0 \
+OPENK_LEADER_PORT=/dev/ttyUSB1 \
+UV_CACHE_DIR=.uv_cache uv run pytest test/test_cleank_hil.py -q
+```
 
-## 補足
-- `pyproject.toml` の `lerobot` 依存はローカル `../lerobot` を editable 参照しています。パスが異なる場合は適宜修正してください。
--
+## よくある詰まりどころ
 
-# 謝辞
-LeRobot by HuggingFace, Inc.
-SO-100 by TheRobotStudio
+### 1) ポート接続エラー
+
+- `lerobot_find_port.py` を再実行
+- YAML 内 `teleop.port` / `robot.port` を再確認
+- 別アプリが同じポートを掴んでいないか確認
+
+### 2) インストール失敗
+
+```bash
+uv venv .venv --python 3.10
+uv pip install -e .
+```
+
+仮想環境を作り直して再実行します。
+
+### 3) 設定が反映されない
+
+- 実行時の `--config_path=...` が意図したファイルか確認
+- 同名の別ファイルを編集していないか確認
+
+## STEP/URDF/STL リンク
+
+- Follower STEP: https://github.com/CleanKDev/OpenK/blob/main/hardware/follower/OpenKSTEP.step
+- Leader STEP: https://github.com/CleanKDev/OpenK/blob/main/hardware/leader/small-leader.step
+- Follower URDF: https://github.com/CleanKDev/OpenK/blob/main/hardware/follower/robot.urdf
+
+## Core Members
+
+- [@sabamiso-rrsc](https://github.com/sabamiso-rrsc): ハードウェア、組み込み、DAMIAO初期化、ソフトウェア
+- @UedaKenji: LeRobot統合、メインソフトウェア開発
+- @shunyatadano: URDFおよびシミュレーション
+- @shinshin0706, @Ryosuke520, @deBroglieeeen: 現場インテグレーション、HW/SW調整、シミュレーション
+
+## 謝辞
+
+- LeRobot by HuggingFace, Inc.
+- SO-100 by TheRobotStudio
