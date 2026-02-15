@@ -112,6 +112,7 @@ https://github.com/user-attachments/assets/53bd0b76-32d7-4085-9f98-901ec6ca804d
 # 謝辞
 - LeRobot by HuggingFace, Inc.
 - SO-100 by TheRobotStudio
+- 洛星ロボット研究部の皆様　https://robot.rakusei.net/
 - OpenArm by Enactic, inc.
 - ロボ⭐︎スタディオン及び会員の皆様
 - DMM.make TIB FAB
