@@ -9,7 +9,17 @@ DAMIAOモーターを使用し、lerobotコードベースで動作します。
 トイレ清掃ロボット[CleanK](https://cleank.space)を開発する過程で生まれた汎用アームです。
 
 # DEMO
+## テレオペレーション
 <https://github.com/user-attachments/assets/53bd0b76-32d7-4085-9f98-901ec6ca804d>
+## データセットビジュアライザー
+lerobotのデータセット形式に準拠しているためSO-ARM101と同じく可視化が可能
+<https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2FHodaka0706%2Fcleank_test_dataset_cam%2Fepisode_0>
+
+
+https://github.com/user-attachments/assets/60f25825-fb9d-405b-99c9-d5dd31f4e1e4
+
+
+
 
 # CAD
 
