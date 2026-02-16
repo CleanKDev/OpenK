@@ -14,6 +14,12 @@ Originally developed as a general-purpose arm during the creation of [CleanK](ht
 
 <https://github.com/user-attachments/assets/53bd0b76-32d7-4085-9f98-901ec6ca804d>
 
+
+
+https://github.com/user-attachments/assets/0954becd-ed6b-4932-8540-8086ab8e8433
+
+
+
 # CAD
 
 ## Follower
