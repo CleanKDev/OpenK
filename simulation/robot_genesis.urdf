@@ -1,0 +1,275 @@
+<?xml version="1.0" ?>
+<!-- OpenK arm URDF for Genesis simulation
+     Based on hardware/follower/robot.urdf with:
+     - Corrected mesh paths (relative to simulation/ directory)
+     - Low-poly meshes for large parts
+     - Wipe pad (alkaline electrolysis sheet) attached to hand
+-->
+<robot name="arm">
+  <material name="opaque246246243">
+    <color rgba="0.965 0.965 0.953 1.0"/>
+  </material>
+  <material name="opaque137137137">
+    <color rgba="0.537 0.537 0.537 1.0"/>
+  </material>
+  <material name="opaque245245246">
+    <color rgba="0.961 0.961 0.965 1.0"/>
+  </material>
+  <material name="opaque636363">
+    <color rgba="0.247 0.247 0.247 1.0"/>
+  </material>
+  <material name="wipe_sheet">
+    <color rgba="0.85 0.92 0.85 1.0"/>
+  </material>
+
+  <!-- ===== Links ===== -->
+  <link name="base_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.009942 0.020064 0.025972"/>
+      <mass value="2.396"/>
+      <inertia ixx="0.003847" ixy="2.8e-05" ixz="0.000853" iyy="0.004002" iyz="-3e-05" izz="0.002056"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="opaque246246243"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="shoulder_link1_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.002020 0.023459 -0.067068"/>
+      <mass value="2.216"/>
+      <inertia ixx="0.00428" ixy="3e-06" ixz="-4e-05" iyy="0.00357" iyz="-0.000152" izz="0.001583"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/shoulder_link1_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="opaque246246243"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/shoulder_link1_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="shoulder_link2_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.025086 -0.000490 -0.050902"/>
+      <mass value="1.785"/>
+      <inertia ixx="0.002118" ixy="6e-06" ixz="-7.7e-05" iyy="0.002476" iyz="1e-06" izz="0.001313"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.021747 -0.021634 0.091118"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/shoulder_link2_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="opaque137137137"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.021747 -0.021634 0.091118"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/shoulder_link2_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="elbow_link1_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.000029 -0.000025 -0.103715"/>
+      <mass value="2.526"/>
+      <inertia ixx="0.00722" ixy="0.0" ixz="2.7e-05" iyy="0.007178" iyz="-4e-06" izz="0.001143"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 -0.021241 0.174618"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/elbow_link1_1_low.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="opaque137137137"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 -0.021241 0.174618"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/elbow_link1_1_low.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="elbow_link2_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.015464 0.000253 -0.085938"/>
+      <mass value="2.501"/>
+      <inertia ixx="0.005233" ixy="1.4e-05" ixz="-0.000109" iyy="0.006014" iyz="1e-06" izz="0.002048"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.019772 -0.020884 0.330118"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/elbow_link2_1_low.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="opaque137137137"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.019772 -0.020884 0.330118"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/elbow_link2_1_low.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="wrist_link_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.006553 -0.000072 -0.050541"/>
+      <mass value="1.609"/>
+      <inertia ixx="0.002472" ixy="2e-06" ixz="0.000402" iyy="0.002637" iyz="-3e-06" izz="0.000726"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.0009 -0.021225 0.486339"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/wrist_link_1_low.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="opaque245245246"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.0009 -0.021225 0.486339"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/wrist_link_1_low.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="hand1_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.034499 0.020017 -0.059649"/>
+      <mass value="1.563"/>
+      <inertia ixx="0.00275" ixy="-6e-06" ixz="-0.00066" iyy="0.002992" iyz="-1.2e-05" izz="0.000866"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.037254 -0.002265 0.592574"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/hand1_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="opaque636363"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.037254 -0.002265 0.592574"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/hand1_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="hand2_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.010407 0.019308 -0.048793"/>
+      <mass value="0.669"/>
+      <inertia ixx="0.000698" ixy="-3e-06" ixz="-5.2e-05" iyy="0.000597" iyz="-7e-06" izz="0.000165"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.024755 -0.002991 0.641193"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/hand2_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="opaque245245246"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.024755 -0.002991 0.641193"/>
+      <geometry>
+        <mesh filename="../hardware/meshes/hand2_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Alkaline electrolysis wipe sheet attached to hand -->
+  <link name="wipe_pad">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 -0.003"/>
+      <mass value="0.05"/>
+      <inertia ixx="1e-05" ixy="0" ixz="0" iyy="1e-05" iyz="0" izz="1e-05"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 -0.003"/>
+      <geometry><box size="0.07 0.05 0.006"/></geometry>
+      <material name="wipe_sheet"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 -0.003"/>
+      <geometry><box size="0.07 0.05 0.006"/></geometry>
+    </collision>
+  </link>
+
+  <!-- ===== Joints (identical kinematics to robot.urdf) ===== -->
+  <joint name="Revolute 1" type="revolute">
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+    <parent link="base_link"/>
+    <child link="shoulder_link1_1"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <limit effort="100" lower="-1.745329" upper="1.570796" velocity="100"/>
+  </joint>
+
+  <joint name="Revolute 2" type="revolute">
+    <origin rpy="0 0 0" xyz="-0.021747 0.021634 -0.091118"/>
+    <parent link="shoulder_link1_1"/>
+    <child link="shoulder_link2_1"/>
+    <axis xyz="-0.999837 0.018051 -0.0"/>
+    <limit effort="100" lower="-1.570796" upper="1.570796" velocity="100"/>
+  </joint>
+
+  <joint name="Revolute 3" type="revolute">
+    <origin rpy="0 0 0" xyz="0.021747 -0.000393 -0.0835"/>
+    <parent link="shoulder_link2_1"/>
+    <child link="elbow_link1_1"/>
+    <axis xyz="-0.0 -0.0 -1.0"/>
+    <limit effort="100" lower="-3.141593" upper="3.141593" velocity="100"/>
+  </joint>
+
+  <joint name="Revolute 4" type="revolute">
+    <origin rpy="0 0 0" xyz="0.019772 -0.000357 -0.1555"/>
+    <parent link="elbow_link1_1"/>
+    <child link="elbow_link2_1"/>
+    <axis xyz="0.999837 -0.018051 0.0"/>
+    <limit effort="100" lower="-1.570796" upper="1.570796" velocity="100"/>
+  </joint>
+
+  <joint name="Revolute 5" type="revolute">
+    <origin rpy="0 0 0" xyz="-0.018872 0.000341 -0.156221"/>
+    <parent link="elbow_link2_1"/>
+    <child link="wrist_link_1"/>
+    <axis xyz="0.0 0.0 -1.0"/>
+    <limit effort="100" lower="-3.141593" upper="3.141593" velocity="100"/>
+  </joint>
+
+  <joint name="Revolute 6" type="revolute">
+    <origin rpy="0 0 0" xyz="0.036354 -0.01896 -0.106235"/>
+    <parent link="wrist_link_1"/>
+    <child link="hand1_1"/>
+    <axis xyz="-0.018051 -0.999837 -0.0"/>
+    <limit effort="100" lower="0.0" upper="2.617994" velocity="100"/>
+  </joint>
+
+  <joint name="Revolute 7" type="revolute">
+    <origin rpy="0 0 0" xyz="-0.012499 0.000726 -0.048619"/>
+    <parent link="hand1_1"/>
+    <child link="hand2_1"/>
+    <axis xyz="-0.018051 -0.999837 -0.0"/>
+    <limit effort="100" lower="0.0" upper="1.047198" velocity="100"/>
+  </joint>
+
+  <!-- Wipe pad fixed to hand tip -->
+  <joint name="wipe_pad_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 -0.055"/>
+    <parent link="hand2_1"/>
+    <child link="wipe_pad"/>
+  </joint>
+</robot>
